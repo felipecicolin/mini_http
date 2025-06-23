@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in simple_http.gemspec
+# Specify your gem's dependencies in mini_http.gemspec
 gemspec
 
 gem "irb"

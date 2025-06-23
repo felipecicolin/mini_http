@@ -1,25 +1,25 @@
 # frozen_string_literal: true
 
-require_relative "lib/simple_http/version"
+require_relative "lib/mini_http/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "simple_http"
-  spec.version = SimpleHttp::VERSION
+  spec.name = "mini_http"
+  spec.version = MiniHttp::VERSION
   spec.authors = ["Felipe Cicolin Rocha"]
   spec.email = ["felipecicolinrocha@gmail.com"]
 
-  spec.summary = "A simple HTTP client library for Ruby"
-  spec.description = "SimpleHttp provides a clean, easy-to-use interface for making HTTP requests " \
+  spec.summary = "A minimal HTTP client library for Ruby"
+  spec.description = "MiniHttp provides a clean, easy-to-use interface for making HTTP requests " \
                      "with automatic JSON handling, SSL support, and customizable timeouts."
-  spec.homepage = "https://github.com/felipecicolin/simple_http"
+  spec.homepage = "https://github.com/felipecicolin/mini_http"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7.0"
 
   # spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/felipecicolin/simple_http"
-  spec.metadata["changelog_uri"] = "https://github.com/felipecicolin/simple_http/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/felipecicolin/mini_http"
+  spec.metadata["changelog_uri"] = "https://github.com/felipecicolin/mini_http/blob/main/CHANGELOG.md"
   spec.metadata["rubygems_mfa_required"] = "true"
 
   # Specify which files should be added to the gem when it is released.

@@ -4,9 +4,9 @@ require "net/http"
 require "uri"
 require "json"
 require "openssl"
-require_relative "simple_http/version"
+require_relative "mini_http/version"
 
-class SimpleHttp
+class MiniHttp
   class Response
     SUCCESS_RANGE = (200..299).freeze
     CLIENT_ERROR_RANGE = (400..499).freeze

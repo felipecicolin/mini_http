@@ -1,6 +1,6 @@
-# SimpleHttp
+# MiniHttp
 
-A simple, lightweight HTTP client library for Ruby that provides a clean interface for making HTTP requests with automatic JSON handling, SSL support, and customizable timeouts.
+A minimal, lightweight HTTP client library for Ruby that provides a clean interface for making HTTP requests with automatic JSON handling, SSL support, and customizable timeouts.
 
 ## Features
 
@@ -16,7 +16,7 @@ A simple, lightweight HTTP client library for Ruby that provides a clean interfa
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'simple_http'
+gem 'mini_http'
 ```
 
 And then execute:
@@ -28,7 +28,7 @@ bundle install
 Or install it yourself as:
 
 ```bash
-gem install simple_http
+gem install mini_http
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ gem install simple_http
 ### Basic GET request
 
 ```ruby
-response = SimpleHttp.get("https://api.example.com/users")
+response = MiniHttp.get("https://api.example.com/users")
 
 if response.success?
   users = response.json
@@ -49,7 +49,7 @@ end
 ### POST request with JSON body
 
 ```ruby
-response = SimpleHttp.post(
+response = MiniHttp.post(
   "https://api.example.com/users",
   body: { name: "John", email: "john@example.com" },
   headers: { "Authorization" => "Bearer token123" }
@@ -63,7 +63,7 @@ end
 ### PUT request
 
 ```ruby
-response = SimpleHttp.put(
+response = MiniHttp.put(
   "https://api.example.com/users/1",
   body: { name: "John Updated" },
   timeout: 60
@@ -73,7 +73,7 @@ response = SimpleHttp.put(
 ### DELETE request
 
 ```ruby
-response = SimpleHttp.delete(
+response = MiniHttp.delete(
   "https://api.example.com/users/1",
   headers: { "Authorization" => "Bearer token123" }
 )
@@ -82,7 +82,7 @@ response = SimpleHttp.delete(
 ### Response methods
 
 ```ruby
-response = SimpleHttp.get("https://api.example.com/data")
+response = MiniHttp.get("https://api.example.com/data")
 
 # Status checking
 response.success?       # true for 2xx status codes
@@ -105,7 +105,7 @@ All methods support these optional parameters:
 - `body`: Request body for POST/PUT (string or object that responds to `to_json`)
 
 ```ruby
-response = SimpleHttp.get(
+response = MiniHttp.get(
   "https://api.example.com/data",
   headers: {
     "User-Agent" => "MyApp/1.0",

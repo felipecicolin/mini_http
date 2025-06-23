@@ -34,7 +34,7 @@ RSpec.describe MiniHttp do
         .to_return(status: 200, body: "OK")
 
       response = MiniHttp.get("https://example.com/api",
-                                headers: { "Authorization" => "Bearer token123", "User-Agent" => "MyApp/1.0" })
+                              headers: { "Authorization" => "Bearer token123", "User-Agent" => "MyApp/1.0" })
 
       expect(response.success?).to be true
     end
@@ -105,8 +105,8 @@ RSpec.describe MiniHttp do
         .to_return(status: 201, body: "Created")
 
       response = MiniHttp.post("https://example.com/api",
-                                 body: { data: "test" },
-                                 headers: { "Content-Type" => "application/custom", "Authorization" => "Bearer token" })
+                               body: { data: "test" },
+                               headers: { "Content-Type" => "application/custom", "Authorization" => "Bearer token" })
 
       expect(response.success?).to be true
     end
@@ -154,7 +154,7 @@ RSpec.describe MiniHttp do
         .to_return(status: 204, body: "")
 
       response = MiniHttp.delete("https://example.com/api/1",
-                                   headers: { "Authorization" => "Bearer token123" })
+                                 headers: { "Authorization" => "Bearer token123" })
 
       expect(response.success?).to be true
     end

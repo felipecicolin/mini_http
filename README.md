@@ -1,6 +1,6 @@
 # MiniHttp
 
-A minimal, lightweight HTTP client library for Ruby that provides a clean interface for making HTTP requests withBug reports and pull requests are welcome on GitHub at https://github.com/felipecicolin/mini_http. This project is intended to be a safe, welcoming space for collaboration.automatic JSON handling, SSL support, and customizable timeouts.
+A minimal, lightweight HTTP client library for Ruby that provides a clean interface for making HTTP requests with automatic JSON handling, SSL support, and customizable timeouts.
 
 ## Features
 

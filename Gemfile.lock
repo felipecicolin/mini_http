@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    simple_http (0.1.0)
+    mini_http (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -90,10 +90,10 @@ PLATFORMS
 
 DEPENDENCIES
   irb
+  mini_http!
   rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 1.21)
-  simple_http!
   webmock (~> 3.0)
 
 BUNDLED WITH

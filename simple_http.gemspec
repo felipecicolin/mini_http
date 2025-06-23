@@ -5,13 +5,13 @@ require_relative "lib/simple_http/version"
 Gem::Specification.new do |spec|
   spec.name = "simple_http"
   spec.version = SimpleHttp::VERSION
-  spec.authors = ["Felipe Cicolin"]
+  spec.authors = ["Felipe Cicolin Rocha"]
   spec.email = ["felipecicolinrocha@gmail.com"]
 
   spec.summary = "A simple HTTP client library for Ruby"
   spec.description = "SimpleHttp provides a clean, easy-to-use interface for making HTTP requests " \
                      "with automatic JSON handling, SSL support, and customizable timeouts."
-  spec.homepage = "https://github.com/felipecicolinrocha/simple_http"
+  spec.homepage = "https://github.com/felipecicolin/simple_http"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7.0"
 
@@ -28,7 +28,8 @@ Gem::Specification.new do |spec|
   spec.files = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL) do |ls|
     ls.readlines("\x0", chomp: true).reject do |f|
       (f == gemspec) ||
-        f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
+        f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile]) ||
+        f.end_with?(".gem")
     end
   end
   spec.bindir = "exe"

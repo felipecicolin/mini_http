@@ -43,6 +43,8 @@ class MiniHttp
     end
 
     def parse_json_safely
+      return nil if @body.nil? || @body.empty?
+
       JSON.parse(@body)
     rescue JSON::ParserError
       nil

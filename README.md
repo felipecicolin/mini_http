@@ -1,3 +1,6 @@
+![ChatGPT Image Jun 25, 2025, 09_45_50 AM-min](https://github.com/user-attachments/assets/8933e973-2a4f-4259-b7c3-a0aab5415d41)
+
+
 # MiniHttp
 
 A minimal, lightweight HTTP client library for Ruby that provides a clean interface for making HTTP requests with automatic JSON handling, SSL support, and customizable timeouts.

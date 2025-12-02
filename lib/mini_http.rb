@@ -90,7 +90,16 @@ class MiniHttp
       return unless uri.scheme == "https"
 
       http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      
+      # Em desenvolvimento, permite desabilitar SSL via variável de ambiente
+      # Em produção ou quando não configurado, sempre verifica SSL
+      if ENV["RAILS_ENV"] == "production" || ENV["RACK_ENV"] == "production"
+        http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      elsif ENV["DISABLE_SSL_VERIFY"] == "true"
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      else
+        http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      end
     end
 
     def configure_timeouts(http, timeout)

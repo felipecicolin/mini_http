@@ -131,3 +131,13 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/felipe
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## SSL Verification
+
+By default, MiniHttp verifies SSL certificates in all environments. For development and testing environments, you can disable SSL verification:
+
+```bash
+export DISABLE_SSL_VERIFY=true
+```
+
+In production environments (RAILS_ENV=production or RACK_ENV=production), SSL verification is always enabled regardless of the environment variable.

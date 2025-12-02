@@ -51,46 +51,55 @@ class MiniHttp
     end
   end
 
-  def self.get(url, headers: {}, timeout: 30)
-    make_request(:get, url, headers: headers, timeout: timeout)
+  def self.get(url, **options)
+    make_request(:get, url, **options)
   end
 
-  def self.post(url, body: nil, headers: {}, timeout: 30)
-    make_request(:post, url, body: body, headers: headers, timeout: timeout)
+  def self.post(url, **options)
+    make_request(:post, url, **options)
   end
 
-  def self.put(url, body: nil, headers: {}, timeout: 30)
-    make_request(:put, url, body: body, headers: headers, timeout: timeout)
+  def self.put(url, **options)
+    make_request(:put, url, **options)
   end
 
-  def self.delete(url, headers: {}, timeout: 30)
-    make_request(:delete, url, headers: headers, timeout: timeout)
+  def self.delete(url, **options)
+    make_request(:delete, url, **options)
   end
 
   class << self
     private
 
-    def make_request(method, url, body: nil, headers: {}, timeout: 30)
+    def make_request(method, url, **options)
+      body = options[:body]
+      headers = options.fetch(:headers, {})
+      timeout = options.fetch(:timeout, 30)
+      ssl = options.fetch(:ssl, true)
+
       uri = URI(url)
-      http = build_http_client(uri, timeout)
+      http = build_http_client(uri, timeout, ssl)
       request = build_request(method, uri, body, headers)
 
       net_response = http.request(request)
       Response.new(net_response)
     end
 
-    def build_http_client(uri, timeout)
+    def build_http_client(uri, timeout, ssl)
       http = Net::HTTP.new(uri.host, uri.port)
-      configure_ssl(http, uri)
+      configure_ssl(http, uri, ssl)
       configure_timeouts(http, timeout)
       http
     end
 
-    def configure_ssl(http, uri)
+    def configure_ssl(http, uri, ssl)
       return unless uri.scheme == "https"
 
       http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      http.verify_mode = if ssl
+                           OpenSSL::SSL::VERIFY_PEER
+                         else
+                           OpenSSL::SSL::VERIFY_NONE
+                         end
     end
 
     def configure_timeouts(http, timeout)

@@ -56,6 +56,24 @@ RSpec.describe MiniHttp do
 
       expect(response.success?).to be true
     end
+
+    it "makes a GET request with SSL verification disabled" do
+      stub_request(:get, "https://example.com/api")
+        .to_return(status: 200, body: "OK")
+
+      response = MiniHttp.get("https://example.com/api", ssl: false)
+
+      expect(response.success?).to be true
+    end
+
+    it "makes a GET request with SSL verification enabled by default" do
+      stub_request(:get, "https://example.com/api")
+        .to_return(status: 200, body: "OK")
+
+      response = MiniHttp.get("https://example.com/api")
+
+      expect(response.success?).to be true
+    end
   end
 
   describe ".post" do
@@ -110,6 +128,16 @@ RSpec.describe MiniHttp do
 
       expect(response.success?).to be true
     end
+
+    it "makes a POST request with SSL verification disabled" do
+      stub_request(:post, "https://example.com/api")
+        .with(body: '{"name":"John"}')
+        .to_return(status: 201, body: '{"id": 1}')
+
+      response = MiniHttp.post("https://example.com/api", body: { name: "John" }, ssl: false)
+
+      expect(response.success?).to be true
+    end
   end
 
   describe ".put" do
@@ -135,6 +163,15 @@ RSpec.describe MiniHttp do
 
       expect(response.success?).to be true
     end
+
+    it "makes a PUT request with SSL verification disabled" do
+      stub_request(:put, "https://example.com/api/1")
+        .to_return(status: 200, body: "OK")
+
+      response = MiniHttp.put("https://example.com/api/1", body: { name: "Updated" }, ssl: false)
+
+      expect(response.success?).to be true
+    end
   end
 
   describe ".delete" do
@@ -155,6 +192,15 @@ RSpec.describe MiniHttp do
 
       response = MiniHttp.delete("https://example.com/api/1",
                                  headers: { "Authorization" => "Bearer token123" })
+
+      expect(response.success?).to be true
+    end
+
+    it "makes a DELETE request with SSL verification disabled" do
+      stub_request(:delete, "https://example.com/api/1")
+        .to_return(status: 204, body: "")
+
+      response = MiniHttp.delete("https://example.com/api/1", ssl: false)
 
       expect(response.success?).to be true
     end

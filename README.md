@@ -106,6 +106,7 @@ All methods support these optional parameters:
 - `headers`: Hash of HTTP headers
 - `timeout`: Request timeout in seconds (default: 30)
 - `body`: Request body for POST/PUT (string or object that responds to `to_json`)
+- `ssl`: Enable/disable SSL certificate verification (default: true)
 
 ```ruby
 response = MiniHttp.get(
@@ -115,6 +116,25 @@ response = MiniHttp.get(
     "Accept" => "application/json"
   },
   timeout: 45
+)
+```
+
+### Disabling SSL verification (for development)
+
+⚠️ **Warning**: Only use this in development environments. Never disable SSL verification in production.
+
+```ruby
+# Useful for testing with self-signed certificates in development
+response = MiniHttp.get(
+  "https://localhost:3000/api/data",
+  ssl: false
+)
+
+# Works with all HTTP methods
+response = MiniHttp.post(
+  "https://dev-api.local/users",
+  body: { name: "Test User" },
+  ssl: false
 )
 ```
 
